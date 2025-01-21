@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Políndromo</title>
+    <title>Identificador de Palíndromo</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <h1>Identificador de Políndromo</h1>
-    <br>
-    <form>
-        <label>
-            Digite uma palavra ou frase para verificar se é um políndromo:
-            <input type="text" name="palavra" id="palavra">
-        </label>
-    </form>
+    <div class="container">
+        <h1>Verificador de Palíndromo</h1>
+        <form id="palindrome-form">
+            <input type="text" id="palavra" placeholder="Digite aqui..." required>
+            <button type="submit">Verificar</button>
+        </form>
+        <p id="resultado"></p>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
