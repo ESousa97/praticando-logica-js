@@ -1,3 +1,5 @@
+// Crie um programa que verifica se uma palavra ou frase é um palíndromo.
+
 document.getElementById("palindrome-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita o recarregamento da página
 
