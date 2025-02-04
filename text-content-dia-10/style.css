@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+#mensagem {
+    font-size: 18px;
+    font-weight: bold;
+    color: blue;
+    margin-top: 20px;
+}
