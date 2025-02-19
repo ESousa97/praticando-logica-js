@@ -1,3 +1,4 @@
+// 3 - Escreva um programa de calculadora simples com funções separadas para adição, subtração, multiplicação e divisão. Utilize um bloco condicional para determinar qual função executar com base em uma variável que representa a operação desejada.
 // Funções para operações matemáticas
 function adicionar(a, b) {
     return a + b;
