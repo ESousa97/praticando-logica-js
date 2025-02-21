@@ -1,0 +1,222 @@
+/* Variáveis para cores, fontes e espaçamentos */
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-blue: #1875e8;
+  --color-green: #00f4bf;
+  --font-chakra: 'Chakra Petch', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --spacing-small: 16px;
+  --spacing-medium: 32px;
+  --spacing-large: 80px;
+}
+
+/* Estilos básicos e de layout */
+body {
+  background: var(--color-black);
+  min-height: 100vh;
+  position: relative;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+}
+
+/* Detalhe de fundo */
+.background__detail {
+  background-color: var(--color-green);
+  height: calc(100% - 389px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 195px;
+  z-index: 0;
+}
+
+/* Botões e links estilizados como botões */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 16px;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  gap: 10px;
+  height: 52px;
+  line-height: normal;
+  padding: 16px 24px;
+  text-align: center;
+  width: 208px;
+}
+
+.button.primary {
+  background-color: var(--color-blue);
+}
+
+.button.secondary {
+  background-color: var(--color-white);
+  color: var(--color-blue);
+}
+
+/* Link utilizado como botão para reiniciar */
+.form__link {
+  background: none;
+  border: none;
+  color: var(--color-green);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 110%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* Container principal de conteúdo */
+.content {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-blue);
+  filter: drop-shadow(0px 0px 30px var(--color-blue));
+  height: 871px;
+  width: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Retângulo decorativo no canto */
+.content__corner-rectangle {
+  background-color: var(--color-green);
+  position: absolute;
+  bottom: -15px;
+  right: 32px;
+  width: 511px;
+  height: 33px;
+  clip-path: polygon(0% 100%, 0% 50%, 4% 0%, 100% 0%, 100% 50%, 96% 100%);
+  z-index: 3;
+}
+
+/* Área principal interna do conteúdo */
+.content__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+  justify-content: flex-start;
+  padding: 100px;
+}
+
+/* Estilos para a área de amigos incluídos */
+.friends__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-blue);
+  border-radius: 8px;
+  color: var(--color-white);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 160%;
+  margin-top: 1rem;
+  padding: 24px;
+  width: 453px;
+}
+
+/* Títulos e subtítulos */
+.friends__title {
+  color: var(--color-blue);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 110%;
+}
+
+.prizeDraw__title {
+  color: var(--color-green);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 110%;
+}
+
+.section__title {
+  color: var(--color-white);
+  font-family: var(--font-chakra);
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 80%;
+  margin: 0 0 var(--spacing-large) 0;
+}
+
+.section__title > span {
+  color: var(--color-blue);
+}
+
+/* Formulário e seus elementos */
+.form {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-inter);
+}
+
+.form__label {
+  color: var(--color-blue);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 110%;
+  margin-bottom: 16px;
+}
+
+.form__input {
+  background-color: transparent;
+  border: 1px solid var(--color-blue);
+  border-radius: 8px;
+  color: var(--color-white);
+  font-size: 21px;
+  font-weight: 400;
+  height: 56px;
+  margin-bottom: var(--spacing-medium);
+  outline: none;
+  padding: 8px 16px;
+  width: 517px;
+}
+
+.form__input::placeholder {
+  color: var(--color-white);
+  font-size: 21px;
+}
+
+.form__buttons {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Imagem da página (decorativa) */
+.page__image {
+  position: absolute;
+  right: 0;
+  top: 76px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Estilização da área do sorteio */
+.prizeDraw__container {
+  color: var(--color-white);
+  font-size: 21px;
+  font-style: italic;
+  font-weight: 700;
+  height: 199px;
+  line-height: 160%;
+  margin-top: 1rem;
+}
+
+/* Layout dos resultados */
+.section--results {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  font-family: var(--font-inter);
+}

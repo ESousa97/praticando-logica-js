@@ -1,0 +1,153 @@
+@import url('_reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@600;700&display=swap');
+
+/* Variáveis de cores e fontes para facilitar a manutenção */
+:root {
+    --color-white: #FFFFFF;
+    --color-dark: rgba(0, 0, 0, 1);
+    --color-dark2: rgba(1, 8, 14, 1);
+    --color-blue: rgba(80, 94, 255, 0.85);
+    --accent-color: #00F4BF;
+    --button-blue: #1875E8;
+    --button-dark: #01080E;
+    --font-primary: 'Chakra Petch', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+}
+
+/* Estilização global do body */
+.body {
+    color: var(--color-white);
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--color-dark) 0%,
+        var(--color-dark2) 25%,
+        var(--color-blue) 50%,
+        var(--color-dark2) 75%,
+        var(--color-dark) 100%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+@media screen and (min-width: 1440px) {
+    .body {
+        padding: 2rem calc((100vw - 1086px) / 2);
+    }
+}
+
+/* Container principal */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Seção divisor com linhas e imagem */
+.divisor {
+    display: flex;
+    gap: 53px;
+    align-items: center;
+    margin: 88px 0 40px;
+}
+
+.divisor__line {
+    height: 1px;
+    width: 282px;
+    background-color: var(--accent-color);
+}
+
+/* Título da página */
+.page-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 5rem;
+    margin-bottom: 2.5rem;
+}
+
+.page-title__emphasis {
+    color: var(--color-blue);
+}
+
+/* Dashboard com itens dos jogos */
+.dashboard {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    border: 1px solid var(--accent-color);
+    padding: 3rem;
+    width: 100%;
+}
+
+.dashboard__items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard__items__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: var(--font-secondary);
+}
+
+/* Imagem do jogo com sombra e indicação de status alugado */
+.dashboard__item__img {
+    box-shadow: 0px 0px 24px 8px rgba(24, 118, 232, 0.25);
+    margin-bottom: 1rem;
+}
+
+.dashboard__item__img--rented {
+    position: relative;
+}
+
+.dashboard__item__img--rented::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(1, 8, 14, 0.4);
+}
+
+/* Nome do jogo */
+.dashboard__item__name {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Botão de ação (Alugar/Devolver) */
+.dashboard__item__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    min-width: 13rem;
+    border-radius: 1rem;
+    background-color: var(--button-blue);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard__item__button--return {
+    background-color: var(--button-dark);
+}
+
+.dashboard__item__button:hover {
+    opacity: 0.9;
+}
+
+/* Imagem de hachuras para efeito visual */
+.hachuras {
+    margin-top: 1.5rem;
+    margin-right: 33px;
+    align-self: flex-end;
+}

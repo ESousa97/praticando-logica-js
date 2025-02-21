@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulação de Arrays</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Manipulação de Arrays</h1>
+    <p>Experimente as operações com arrays: concatenação, remoção, embaralhamento e remoção de duplicatas.</p>
+
+    <!-- Seção de concatenação e remoção -->
+    <section id="section-concatenar">
+      <h2>Concatenação & Remoção</h2>
+      <label for="minhaLista">Minha Lista (separada por vírgulas):</label>
+      <input type="text" id="minhaLista" value="1, 2, 3">
+      <label for="suaLista">Sua Lista (separada por vírgulas):</label>
+      <input type="text" id="suaLista" value="4, 5, 6">
+      <button id="btnConcatenar">Concatenar e Remover Último Elemento</button>
+      <p id="resultadoConcatenacao"></p>
+    </section>
+
+    <!-- Seção de embaralhamento -->
+    <section id="section-embaralhar">
+      <h2>Embaralhar Lista</h2>
+      <button id="btnEmbaralhar">Embaralhar Lista Concatenada</button>
+      <p id="resultadoEmbaralhar"></p>
+    </section>
+
+    <!-- Seção de remoção de duplicatas -->
+    <section id="section-duplicatas">
+      <h2>Remover Duplicatas</h2>
+      <label for="listaDuplicada">Lista com Duplicatas (separada por vírgulas):</label>
+      <input type="text" id="listaDuplicada" value="1, 2, 3, 4, 5, 6, 1, 2, 3">
+      <button id="btnRemoverDuplicatas">Remover Duplicatas</button>
+      <p id="resultadoDuplicatas"></p>
+    </section>
+  </div>
+  <script src="js/value.js"></script>
+</body>
+</html>

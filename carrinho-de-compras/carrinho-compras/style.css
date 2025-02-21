@@ -1,0 +1,215 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variáveis de cores e fontes */
+:root {
+  --light-blue: #1875E8;
+  --void: #01080E;
+  --white: #FFF;
+  --black: #000;
+}
+
+/* Estilos globais */
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #01080E 10%, #FFF 10%, #FFF 90%, #01080E 90%);
+  padding: 7vh 8vw 5vh;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+button {
+  background: inherit;
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Remove aparências padrão de selects e inputs numéricos */
+select {
+  appearance: none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Classes de texto */
+.texto-medio-azul {
+  color: var(--light-blue);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 110%;
+}
+
+.texto-azul {
+  color: var(--light-blue);
+}
+
+/* Conteúdo principal */
+.conteudo-principal {
+  filter: drop-shadow(0px 0px 70px rgba(2, 189, 255, 0.40));
+  min-height: 100%;
+  padding: 5rem 6.5rem;
+  display: grid;
+  grid-template-columns: 1.375fr 1fr;
+  column-gap: 5rem;
+  background: white url('./assets/oculos.png') no-repeat bottom left;
+  background-size: auto 40%;
+  position: relative;
+  background-position: left bottom -40px;
+}
+
+/* Grafismo azul */
+.grafismo-azul {
+  position: absolute;
+  width: 31.9375rem;
+  height: 2.0625rem;
+  background-image: url('./assets/grafismo-azul.svg');
+  top: -1rem;
+}
+
+/* Título */
+.titulo {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 100%;
+  margin-bottom: 2.5rem;
+}
+
+/* Formulário */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Produto input */
+.produto-input {
+  width: 24.75rem;
+  height: 3.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--light-blue);
+  color: var(--void);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3125rem;
+  font-style: italic;
+  background: url('./assets/arrow-down.svg') no-repeat right 1rem center;
+}
+
+/* Quantidade input */
+.quantidade-input {
+  height: 3.5rem;
+  padding: 1rem;
+  width: 4.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--light-blue);
+  color: var(--void);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3125rem;
+  font-style: italic;
+}
+
+/* Parte inferior do formulário */
+.parte-inferior {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+/* Botões wrapper */
+.botoes-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+/* Botões do formulário */
+.botao-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 3.25rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.botao-adicionar {
+  background: var(--light-blue);
+  box-shadow: 0px 0px 20px 0px rgba(24, 117, 232, 0.50);
+  color: var(--white);
+}
+
+.botao-limpar {
+  background: var(--void);
+  box-shadow: 0px 0px 20px 0px rgba(1, 8, 14, 0.50);
+  color: var(--white);
+}
+
+/* Carrinho */
+.carrinho {
+  display: flex;
+  width: 24rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.titulo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carrinho__titulo {
+  color: var(--light-blue);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 110%;
+}
+
+.carrinho__produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carrinho__produtos__produto {
+  font-size: 1.3125rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 110%;
+}
+
+.divisoria {
+  width: 24rem;
+  height: 0.0625rem;
+  background: var(--black);
+}
+
+.carrinho__total {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 110%;
+}
