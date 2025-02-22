@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Estudantes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Verificador de Estudantes</h1>
+    
+    <!-- Exibição da lista de estudantes -->
+    <section class="student-display">
+      <h2>Lista de Estudantes:</h2>
+      <ul id="studentList"></ul>
+    </section>
+    
+    <!-- Formulário para verificar se um estudante está presente -->
+    <section class="verify">
+      <h2>Verificar Estudante</h2>
+      <form id="verifyForm">
+        <input type="text" id="verifyNome" placeholder="Nome do estudante">
+        <input type="number" id="verifyIdade" placeholder="Idade">
+        <button type="submit">Verificar</button>
+      </form>
+      <p class="result" id="verifyResult"></p>
+    </section>
+    
+    <!-- Formulário para adicionar um novo estudante -->
+    <section class="add">
+      <h2>Adicionar Estudante</h2>
+      <form id="addForm">
+        <input type="text" id="addNome" placeholder="Nome do estudante">
+        <input type="number" id="addIdade" placeholder="Idade">
+        <button type="submit">Adicionar</button>
+      </form>
+      <p class="result" id="addResult"></p>
+    </section>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Elemento no Array</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Verificador de Elemento</h1>
+    
+    <!-- Exibição do array atual -->
+    <section class="array-display">
+      <h2>Array Atual:</h2>
+      <ul id="arrayList"></ul>
+    </section>
+    
+    <!-- Formulário para verificação de elemento -->
+    <section class="verify">
+      <h2>Verificar Elemento</h2>
+      <form id="verifyForm">
+        <input type="text" id="verifyInput" placeholder="Digite um número para verificar">
+        <button type="submit">Verificar</button>
+      </form>
+      <p class="result" id="verifyResult"></p>
+    </section>
+    
+    <!-- Formulário para adicionar um novo elemento -->
+    <section class="add">
+      <h2>Adicionar Elemento</h2>
+      <form id="addForm">
+        <input type="text" id="addInput" placeholder="Digite um novo número">
+        <button type="submit">Adicionar</button>
+      </form>
+      <p class="result" id="addResult"></p>
+    </section>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>

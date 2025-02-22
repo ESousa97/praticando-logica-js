@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciador de Array</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gerenciador de Array</h1>
+    
+    <!-- Seção para exibir o array atual -->
+    <section class="array-display">
+      <h2>Array Atual:</h2>
+      <ul id="arrayList"></ul>
+    </section>
+    
+    <!-- Seção para verificar um elemento -->
+    <section class="verify">
+      <h2>Verificar Elemento</h2>
+      <form id="verifyForm">
+        <input type="text" id="verifyInput" placeholder="Digite o elemento para verificar">
+        <button type="submit">Verificar</button>
+      </form>
+      <p class="result" id="verifyResult"></p>
+    </section>
+    
+    <!-- Seção para adicionar um novo elemento -->
+    <section class="add">
+      <h2>Adicionar Elemento</h2>
+      <form id="addForm">
+        <input type="text" id="addInput" placeholder="Digite o novo elemento">
+        <button type="submit">Adicionar</button>
+      </form>
+      <p class="result" id="addResult"></p>
+    </section>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Strings no Array</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Verificador de Strings</h1>
+    
+    <!-- Exibição do array atual -->
+    <section class="array-display">
+      <h2>Array Atual:</h2>
+      <p id="arrayText"></p>
+      <ul id="arrayList"></ul>
+    </section>
+    
+    <!-- Formulário para verificar se uma string está presente -->
+    <section class="verify">
+      <h2>Verificar String</h2>
+      <form id="verifyForm">
+        <input type="text" id="verifyInput" placeholder="Digite a string para verificar">
+        <button type="submit">Verificar</button>
+      </form>
+      <p class="result" id="verifyResult"></p>
+    </section>
+    
+    <!-- Formulário para adicionar uma nova string -->
+    <section class="add">
+      <h2>Adicionar String</h2>
+      <form id="addForm">
+        <input type="text" id="addInput" placeholder="Digite a nova string">
+        <button type="submit">Adicionar</button>
+      </form>
+      <p class="result" id="addResult"></p>
+    </section>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>

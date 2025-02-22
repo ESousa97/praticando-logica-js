@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Ano Bissexto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificador de Ano Bissexto</h1>
+        <form id="form_main">
+            <label for="date">Selecione uma data:</label>
+            <input name="date" id="date" type="date">
+            
+            <button id="calculateButton" type="button">Verificar</button>
+            
+            <div class="result">
+                <p><strong>Tipo:</strong> <span id="type"></span></p>
+                <p><strong>Dia da Semana:</strong> <span id="day"></span></p>
+            </div>
+        </form>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
