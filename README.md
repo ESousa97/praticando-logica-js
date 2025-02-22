@@ -13,7 +13,7 @@ O repositório está organizado em diretórios, cada um contendo um exercício e
 ### 📚 Descrição dos Projetos
 
 #### 🌟 **Sorteador de Números**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Analisar o código de uma página HTML para entender sua estrutura;
 - Declarar variáveis no JavaScript para armazenar elementos;
 - Recuperar elementos da página com `document.getElementById()`;
@@ -26,7 +26,7 @@ Nessa aula, você aprendeu como:
 - Modificar o HTML de um elemento com `innerHTML`.
 
 #### 🎮 **AluGames**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Analisar o código HTML para planejamento de funcionalidade;
 - Utilizar `document.querySelector()` e `document.getElementById()` para recuperar elementos;
 - Manipular classes CSS (`classList.contains()`, `classList.add()`, `classList.remove()`);
@@ -40,7 +40,7 @@ Nessa aula, você aprendeu como:
 - Implementar função para ordenar três números.
 
 #### 🛍️ **Carrinho de Compras**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Utilizar `split()` para separar trechos de uma string;
 - Recuperar valores digitados com `value`;
 - Modificar HTML com `innerHTML`;
@@ -55,7 +55,7 @@ Nessa aula, você aprendeu como:
 - Separar e exibir números de uma string com `split()`.
 
 #### 🎫 **Ingresso Online**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Converter string para número inteiro com `parseInt()`;
 - Criar funções separadas para funcionalidades;
 - Utilizar blocos condicionais `if/else`.
@@ -68,7 +68,7 @@ Nessa aula, você aprendeu como:
 - Criar função para conversão entre Celsius e Fahrenheit.
 
 #### 🎯 **Amigo Secreto**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Trabalhar com arrays e `push()`;
 - Utilizar códigos prontos para embaralhamento de elementos.
 
@@ -80,7 +80,7 @@ Nessa aula, você aprendeu como:
 - Criar função para remover elementos duplicados.
 
 #### 📚 **Desafios Complementares**
-Nessa aula, você aprendeu como:
+Nessa aula, aprendi como:
 - Realizar validações com condicionais;
 - Interromper execução de uma função com `return`;
 - Contar elementos de um array com `length`;
