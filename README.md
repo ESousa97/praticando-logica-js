@@ -13,6 +13,9 @@ O repositório está organizado em diretórios, cada um contendo um exercício e
 ### 📚 Descrição dos Projetos
 
 #### 🌟 **Sorteador de Números**
+
+🔗 [![Sorteador de Números](https://img.shields.io/badge/Acesse%20o%20Projeto-Click%20Aqui-blue)](https://praticando-logica-js-2.vercel.app/)
+
 Nessa aula, aprendi como:
 - Analisar o código de uma página HTML para entender sua estrutura;
 - Declarar variáveis no JavaScript para armazenar elementos;
@@ -26,6 +29,9 @@ Nessa aula, aprendi como:
 - Modificar o HTML de um elemento com `innerHTML`.
 
 #### 🎮 **AluGames**
+
+🔗 [![AluGames](https://img.shields.io/badge/Acesse%20o%20Projeto-Click%20Aqui-blue)](https://praticando-logica-js.vercel.app/)
+
 Nessa aula, aprendi como:
 - Analisar o código HTML para planejamento de funcionalidade;
 - Utilizar `document.querySelector()` e `document.getElementById()` para recuperar elementos;
@@ -40,6 +46,9 @@ Nessa aula, aprendi como:
 - Implementar função para ordenar três números.
 
 #### 🛍️ **Carrinho de Compras**
+
+🔗 [![Acesse o projeto](https://img.shields.io/badge/Acesse%20o%20Projeto-Click%20Aqui-blue)](https://praticando-logica-js-isg8.vercel.app/)
+
 Nessa aula, aprendi como:
 - Utilizar `split()` para separar trechos de uma string;
 - Recuperar valores digitados com `value`;
@@ -55,6 +64,9 @@ Nessa aula, aprendi como:
 - Separar e exibir números de uma string com `split()`.
 
 #### 🎫 **Ingresso Online**
+
+🔗 [![Acesse o projeto](https://img.shields.io/badge/Acesse%20o%20Projeto-Click%20Aqui-blue)](https://ingressos-online-kohl.vercel.app/)
+
 Nessa aula, aprendi como:
 - Converter string para número inteiro com `parseInt()`;
 - Criar funções separadas para funcionalidades;
@@ -68,6 +80,9 @@ Nessa aula, aprendi como:
 - Criar função para conversão entre Celsius e Fahrenheit.
 
 #### 🎯 **Amigo Secreto**
+
+🔗 [![Acesse o projeto](https://img.shields.io/badge/Acesse%20o%20Projeto-Click%20Aqui-blue)](https://praticando-logica-js-75ku.vercel.app/)
+
 Nessa aula, aprendi como:
 - Trabalhar com arrays e `push()`;
 - Utilizar códigos prontos para embaralhamento de elementos.
@@ -85,6 +100,54 @@ Nessa aula, aprendi como:
 - Interromper execução de uma função com `return`;
 - Contar elementos de um array com `length`;
 - Verificar a existência de elementos em um array com `includes()`.
+
+## 📎 Links dos Projetos e Desafios
+
+- Calculadora Simples: [Acesse aqui](https://praticando-logica-js-o4v5.vercel.app/)
+
+- Conversor de Temperatura: [Acesse aqui](https://converter-temperatura.vercel.app/)
+
+- Formulário Simples: [Acesse aqui](https://formulario-simples-seven.vercel.app/)
+
+- Frases Split: [Acesse aqui](https://frases-split.vercel.app/)
+
+- Separador de Números: [Acesse aqui](https://numeros-split.vercel.app/)
+
+- Ordenador de Números: [Acesse aqui](https://ordenador-de-numeros.vercel.app/)
+
+- Verificador de Palíndromo: [Acesse aqui](https://palindromo-nu.vercel.app/)
+
+- Manipulador de Arrays: [Acesse aqui](https://sequencia-valores.vercel.app/)
+
+- Modifica com TextContent: [Acesse aqui](https://text-content-alpha.vercel.app/)
+
+- Variáveis Numéricas: [Acesse aqui](https://variaveis-numericas.vercel.app/)
+
+- Verificador de Par ou Ímpar: [Acesse aqui](https://verify-impar-par.vercel.app/)
+
+### Desafios finais
+
+- Validador de números positivos, negativos ou zero: [Acesse aqui](https://validor-positivo-negativo-zero.vercel.app/)
+
+- Verificador de maior idade: [Acesse aqui](https://verificador-idade-pink-eight.vercel.app/)
+
+- Validador de Strings: [Acesse aqui](https://validador-de-string.vercel.app/)
+
+- Verificador de Ano Bissexto: [Acesse aqui](https://desafios-finais.vercel.app/)
+
+- Calculadora de Média: [Acesse aqui](https://calcula-media-numeros.vercel.app/)
+
+- Verificador de Tamanho de Array: [Acesse aqui](https://return-size-array.vercel.app/)
+
+- Gerenciador de Array: [Acesse aqui](https://validador-includes.vercel.app/)
+
+- Verificador de Elemento: [Acesse aqui](https://return-elemento.vercel.app/)
+
+- Verificador de Strings no Array: [Acesse aqui](https://array-de-string.vercel.app/)
+
+- Verificador de Objetos: [Acesse aqui](https://array-de-objetos.vercel.app/)
+
+- Soma dos Pares e Produtos Ímpares: [Acesse aqui](https://array-de-elementos-pares.vercel.app/)
 
 ## 🚀 Como Executar os Exercícios
 
