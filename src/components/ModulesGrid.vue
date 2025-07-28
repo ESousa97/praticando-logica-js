@@ -1,4 +1,4 @@
-// src/components/ModulesGrid.vue
+<!-- src/components/ModulesGrid.vue -->
 <template>
   <div class="modules-container">
     <h2 class="modules-title">
@@ -48,8 +48,11 @@ export default {
     },
 
     isModuleLocked(moduleId) {
-      // Implementar lógica de desbloqueio
-      return false
+      const modules = this.modules
+      const index = modules.findIndex(m => m.id === moduleId)
+      if (index === 0) return false // Primeiro módulo sempre desbloqueado
+      // Retorna true se o módulo anterior não foi completado (logo, está bloqueado)
+      return !this.userProgress.completedModules.includes(modules[index - 1].id)
     }
   }
 }

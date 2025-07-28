@@ -1,140 +1,181 @@
-// src/components/lesson/ExerciseSection.vue
 <template>
   <div class="exercise-section">
-    <div class="exercise-header">
-      <h3>💡 Hora de Praticar!</h3>
-      <p>{{ exercise.question }}</p>
-    </div>
+    <h4>💡 Exercício</h4>
+    <p class="question">{{ exercise.question }}</p>
 
-    <div class="exercise-input-area">
-      <textarea 
-        v-if="exercise.type === 'code'"
-        v-model="userAnswer"
-        class="exercise-input code-input"
-        :placeholder="exercise.placeholder"
-        rows="6"
-      ></textarea>
-      
-      <input 
-        v-else
-        v-model="userAnswer"
-        class="exercise-input"
-        :type="exercise.type || 'text'"
-        :placeholder="exercise.placeholder"
-      >
-    </div>
+    <textarea
+      v-if="exercise.type === 'code'"
+      v-model="userAnswer"
+      :placeholder="exercise.placeholder"
+      rows="6"
+      class="code-input"
+    ></textarea>
 
-    <div class="exercise-actions">
-      <button class="btn btn-primary" @click="checkAnswer">
+    <input
+      v-else
+      v-model="userAnswer"
+      :placeholder="exercise.placeholder"
+      :type="exercise.type || 'text'"
+      class="text-input"
+    />
+
+    <div class="buttons">
+      <button @click="checkAnswer" :disabled="isCompleted" class="btn btn-primary">
         Verificar Resposta
       </button>
-      
-      <button 
-        v-if="showHintButton" 
-        class="btn btn-secondary" 
+
+      <button
+        v-if="showHintButton"
         @click="toggleHint"
+        :disabled="isCompleted"
+        class="btn btn-secondary"
       >
-        💡 {{ showHint ? 'Ocultar' : 'Ver' }} Dica
+        {{ showHint ? "Ocultar" : "Ver" }} Dica 💡
       </button>
     </div>
 
-    <HintBox 
-      v-if="showHint && exercise.hint" 
-      :hint="exercise.hint" 
-    />
-
-    <FeedbackMessage 
-      v-if="feedback" 
-      :message="feedback" 
-      :type="feedbackType" 
-    />
-
-    <div v-if="isCompleted" class="completion-actions">
-      <button class="btn btn-success" @click="nextStep">
-        Continuar →
-      </button>
+    <div v-if="showHint" class="hint-box">
+      <strong>Dica:</strong> {{ exercise.hint }}
     </div>
+
+    <div v-if="feedback" :class="['feedback', feedbackType]">{{ feedback }}</div>
   </div>
 </template>
 
 <script>
-import HintBox from '../HintBox.vue'
-import FeedbackMessage from '../FeedbackMessage.vue'
-
 export default {
-  name: 'ExerciseSection',
-  components: {
-    HintBox,
-    FeedbackMessage
-  },
-
+  name: "ExerciseSection",
   props: {
-    exercise: {
-      type: Object,
-      required: true
-    }
+    exercise: { type: Object, required: true },
   },
-
-  emits: ['exercise-completed'],
-
   data() {
     return {
-      userAnswer: '',
-      feedback: '',
-      feedbackType: '',
-      showHint: false,
+      userAnswer: "",
+      feedback: "",
+      feedbackType: "",
       isCompleted: false,
-      attempts: 0
-    }
+      attempts: 0,
+      showHint: false,
+    };
   },
-
   computed: {
     showHintButton() {
-      return this.attempts >= 2 && this.exercise.hint
-    }
+      return this.attempts >= 2 && this.exercise.hint && !this.isCompleted;
+    },
   },
-
+  watch: {
+    exercise: {
+      immediate: true,
+      handler() {
+        this.resetExercise();
+      },
+    },
+  },
   methods: {
+    resetExercise() {
+      this.userAnswer = "";
+      this.feedback = "";
+      this.feedbackType = "";
+      this.isCompleted = false;
+      this.attempts = 0;
+      this.showHint = false;
+    },
     checkAnswer() {
-      this.attempts++
-      
-      const isCorrect = this.validateAnswer()
-      
-      if (isCorrect) {
-        this.feedback = 'Parabéns! Resposta correta! 🎉'
-        this.feedbackType = 'success'
-        this.isCompleted = true
-        this.$emit('exercise-completed')
+      this.attempts++;
+      if (this.validateAnswer()) {
+        this.feedback = "Parabéns! Resposta correta! 🎉";
+        this.feedbackType = "success";
+        this.isCompleted = true;
+        this.$emit("exercise-completed");
       } else {
-        this.feedback = 'Ops! Tente novamente. 🤔'
-        this.feedbackType = 'error'
+        this.feedback = "Ops! Tente novamente. 🤔";
+        this.feedbackType = "error";
       }
     },
-
     validateAnswer() {
-      const { answer, type } = this.exercise
-      
-      if (type === 'code') {
-        return this.validateCodeAnswer(answer)
+      if (this.exercise.type === "code") {
+        const code = this.userAnswer.toLowerCase();
+        return this.exercise.answer.every((term) => code.includes(term.toLowerCase()));
+      } else if (this.exercise.type === "text") {
+        return this.userAnswer.toLowerCase().includes(this.exercise.answer.toLowerCase());
+      } else {
+        return this.userAnswer.toLowerCase() === this.exercise.answer.toLowerCase();
       }
-      
-      return this.userAnswer.toLowerCase().trim() === answer.toLowerCase()
     },
-
-    validateCodeAnswer(expectedElements) {
-      const userCode = this.userAnswer.toLowerCase()
-      return expectedElements.every(element => 
-        userCode.includes(element.toLowerCase())
-      )
-    },
-
     toggleHint() {
-      this.showHint = !this.showHint
+      this.showHint = !this.showHint;
     },
-
-    nextStep() {
-      // Lógica para próximo passo
-    }
-  }
-}
+  },
+};
 </script>
+
+<style scoped>
+.exercise-section {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fafafa;
+  margin-bottom: 2rem;
+}
+.question {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.code-input,
+.text-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: monospace;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-primary:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.hint-box {
+  margin-top: 1rem;
+  background: #fff3cd;
+  border-radius: 6px;
+  padding: 0.75rem;
+  color: #856404;
+  font-weight: 600;
+}
+.feedback {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.feedback.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+.feedback.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+</style>

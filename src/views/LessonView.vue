@@ -1,4 +1,4 @@
-// src/views/LessonView.vue
+<!-- src/views/LessonView.vue -->
 <template>
   <div class="lesson-view">
     <div class="lesson-header">
@@ -26,6 +26,8 @@
       <ExerciseSection 
         :exercise="lesson.exercise"
         @exercise-completed="onExerciseCompleted"
+        @next-step="goToNextLesson"
+        ref="exerciseSection"
       />
     </div>
 
@@ -77,23 +79,39 @@ export default {
   computed: {
     lesson() {
       return this.modulesStore.getLessonById(this.moduleId, this.lessonId)
+    },
+
+    moduleLessons() {
+      const module = this.modulesStore.getModuleById(this.moduleId)
+      return module ? module.lessons : []
+    },
+
+    currentLessonIndex() {
+      return this.moduleLessons.findIndex(lesson => lesson.id === this.lessonId)
     }
   },
 
   methods: {
     onDemoCompleted() {
-      // Lógica quando demo é completada
+      // Futuro: ações ao completar demo interativa
     },
 
     onExerciseCompleted() {
       this.userProgress.completeLesson(this.moduleId, this.lessonId)
-      
-      // Mostrar celebração ou ir para próxima lição
-      this.showCompletionFeedback()
+      // Você pode colocar feedback visual aqui
     },
 
-    showCompletionFeedback() {
-      // Implementar feedback visual
+    goToNextLesson() {
+      const nextIndex = this.currentLessonIndex + 1
+      if (nextIndex < this.moduleLessons.length) {
+        const nextLessonId = this.moduleLessons[nextIndex].id
+        this.$router.push({ 
+          name: 'Lesson', 
+          params: { moduleId: this.moduleId, lessonId: nextLessonId }
+        })
+      } else {
+        this.$router.push({ name: 'Module', params: { moduleId: this.moduleId } })
+      }
     },
 
     goBack() {
@@ -102,3 +120,47 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.lesson-view {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.lesson-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.lesson-info h1 {
+  margin-bottom: 0.5rem;
+}
+
+.lesson-info p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 0;
+}
+
+.error-state {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.error-state h2 {
+  margin-bottom: 1rem;
+}
+</style>

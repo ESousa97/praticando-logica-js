@@ -1,296 +1,168 @@
-// src/components/PracticeArea.vue
 <template>
   <div class="practice-area">
-    <div class="practice-header">
-      <h2>💻 Área de Prática</h2>
-      <p>Teste seus conhecimentos com exercícios rápidos!</p>
-    </div>
+    <h2>💻 {{ module.title }}</h2>
+    <p>Escolha uma aula para começar a praticar:</p>
 
-    <div class="practice-categories">
-      <div 
-        v-for="category in practiceCategories"
-        :key="category.id"
-        class="practice-category"
-        @click="selectCategory(category)"
+    <div class="lessons-list">
+      <div
+        v-for="lesson in module.lessons"
+        :key="lesson.id"
+        :class="['lesson-card', { active: selectedLesson && selectedLesson.id === lesson.id }]"
+        @click="selectLesson(lesson)"
       >
-        <div class="category-icon">{{ category.icon }}</div>
-        <h3>{{ category.title }}</h3>
-        <p>{{ category.description }}</p>
-        <div class="category-difficulty">
-          <span class="difficulty-badge" :class="category.difficulty">
-            {{ category.difficulty }}
-          </span>
-        </div>
+        <h3>{{ lesson.title }}</h3>
+        <p>{{ lesson.theory }}</p>
+        <span class="status" :class="{ completed: completedLessons.includes(lesson.id) }">
+          {{ completedLessons.includes(lesson.id) ? "✅ Completada" : "🔒" }}
+        </span>
       </div>
     </div>
 
-    <!-- Exercício Selecionado -->
-    <div v-if="selectedExercise" class="current-exercise">
-      <div class="exercise-header">
-        <h3>{{ selectedExercise.title }}</h3>
-        <button class="btn btn-outline" @click="selectedExercise = null">
-          Fechar
-        </button>
-      </div>
-      
-      <ExerciseSection 
-        :exercise="selectedExercise"
-        @exercise-completed="onPracticeCompleted"
+    <div v-if="selectedLesson" class="lesson-detail">
+      <h3>{{ selectedLesson.title }}</h3>
+      <p class="theory-text" v-html="selectedLesson.theory"></p>
+
+      <ExerciseSection
+        :exercise="selectedLesson.exercise"
+        @exercise-completed="onExerciseCompleted"
       />
+
+      <button
+        v-if="showNextLessonButton"
+        class="btn btn-primary next-lesson-btn"
+        @click="goToNextLesson"
+      >
+        Próxima Aula →
+      </button>
+
+      <button class="btn btn-outline close-lesson-btn" @click="closeLesson">
+        Fechar Aula
+      </button>
     </div>
 
-    <!-- Histórico de Prática -->
-    <div v-if="practiceHistory.length > 0" class="practice-history">
-      <h3>📊 Histórico Recente</h3>
-      <div class="history-items">
-        <div 
-          v-for="item in practiceHistory.slice(0, 5)"
-          :key="item.id"
-          class="history-item"
-        >
-          <span class="history-icon">{{ item.correct ? '✅' : '❌' }}</span>
-          <span class="history-title">{{ item.title }}</span>
-          <span class="history-time">{{ formatTime(item.timestamp) }}</span>
-        </div>
-      </div>
+    <div class="progress">
+      Aulas completadas: {{ completedLessons.length }} / {{ module.lessons.length }}
     </div>
   </div>
 </template>
 
 <script>
-import { useUserProgressStore } from '../stores/userProgress'
-import ExerciseSection from './lesson/ExerciseSection.vue'
+import { module } from "../data/module.js";
+import ExerciseSection from "./lesson/ExerciseSection.vue";
 
 export default {
-  name: 'PracticeArea',
-  components: {
-    ExerciseSection
-  },
-
-  setup() {
-    const userProgress = useUserProgressStore()
-    return { userProgress }
-  },
-
+  name: "PracticeArea",
+  components: { ExerciseSection },
   data() {
     return {
-      selectedExercise: null,
-      practiceHistory: JSON.parse(localStorage.getItem('practiceHistory')) || [],
-      practiceCategories: [
-        {
-          id: 'variables',
-          title: 'Variáveis',
-          icon: '🔢',
-          description: 'Pratique declaração e manipulação de variáveis',
-          difficulty: 'beginner',
-          exercises: [
-            {
-              title: 'Soma de Variáveis',
-              type: 'code',
-              question: 'Crie duas variáveis (a = 10, b = 20) e calcule sua soma:',
-              placeholder: 'let a = 10;\nlet b = 20;\n// Calcule a soma',
-              answer: ['let', 'a', '10', 'b', '20', 'soma', '+'],
-              hint: 'Use let para declarar variáveis e + para somar'
-            }
-          ]
-        },
-        {
-          id: 'conditionals',
-          title: 'Condicionais',
-          icon: '🤔',
-          description: 'Teste sua lógica com if/else',
-          difficulty: 'beginner',
-          exercises: [
-            {
-              title: 'Verificar Maioridade',
-              type: 'number',
-              question: 'Digite uma idade. O código deve verificar se é maior de idade (18+):',
-              placeholder: 'Digite uma idade',
-              answer: 'maior',
-              hint: 'Use if (idade >= 18) para verificar'
-            }
-          ]
-        },
-        {
-          id: 'functions',
-          title: 'Funções',
-          icon: '⚙️',
-          description: 'Crie e use funções',
-          difficulty: 'intermediate',
-          exercises: []
-        },
-        {
-          id: 'arrays',
-          title: 'Arrays',
-          icon: '📋',
-          description: 'Manipule listas e arrays',
-          difficulty: 'intermediate',
-          exercises: []
-        }
-      ]
-    }
+      module,
+      selectedLesson: null,
+      completedLessons: JSON.parse(localStorage.getItem("completedLessons")) || [],
+    };
   },
-
+  computed: {
+    showNextLessonButton() {
+      if (!this.selectedLesson) return false;
+      const currentIndex = this.module.lessons.findIndex(
+        (l) => l.id === this.selectedLesson.id
+      );
+      return currentIndex < this.module.lessons.length - 1 && this.completedLessons.includes(this.selectedLesson.id);
+    },
+  },
   methods: {
-    selectCategory(category) {
-      if (category.exercises.length > 0) {
-        // Selecionar exercício aleatório da categoria
-        const randomIndex = Math.floor(Math.random() * category.exercises.length)
-        this.selectedExercise = {
-          ...category.exercises[randomIndex],
-          categoryId: category.id
-        }
+    selectLesson(lesson) {
+      this.selectedLesson = lesson;
+    },
+    onExerciseCompleted() {
+      if (!this.completedLessons.includes(this.selectedLesson.id)) {
+        this.completedLessons.push(this.selectedLesson.id);
+        localStorage.setItem(
+          "completedLessons",
+          JSON.stringify(this.completedLessons)
+        );
       }
     },
-
-    onPracticeCompleted(isCorrect) {
-      const historyItem = {
-        id: Date.now(),
-        title: this.selectedExercise.title,
-        correct: isCorrect,
-        timestamp: new Date(),
-        categoryId: this.selectedExercise.categoryId
-      }
-
-      this.practiceHistory.unshift(historyItem)
-      this.practiceHistory = this.practiceHistory.slice(0, 20) // Manter apenas 20 últimos
-
-      localStorage.setItem('practiceHistory', JSON.stringify(this.practiceHistory))
-
-      if (isCorrect) {
-        this.userProgress.addPoints(5) // Pontos por prática
+    goToNextLesson() {
+      const currentIndex = this.module.lessons.findIndex(
+        (l) => l.id === this.selectedLesson.id
+      );
+      const nextLesson = this.module.lessons[currentIndex + 1];
+      if (nextLesson) {
+        this.selectedLesson = nextLesson;
       }
     },
-
-    formatTime(timestamp) {
-      const now = new Date()
-      const diff = now - new Date(timestamp)
-      const minutes = Math.floor(diff / 60000)
-      
-      if (minutes < 1) return 'Agora mesmo'
-      if (minutes < 60) return `${minutes}m atrás`
-      
-      const hours = Math.floor(minutes / 60)
-      if (hours < 24) return `${hours}h atrás`
-      
-      const days = Math.floor(hours / 24)
-      return `${days}d atrás`
-    }
-  }
-}
+    closeLesson() {
+      this.selectedLesson = null;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .practice-area {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
 }
-
-.practice-header {
-  text-align: center;
-  margin-bottom: 2rem;
+.lessons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
-
-.practice-categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.practice-category {
-  background: white;
-  border: 2px solid #e9ecef;
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
+.lesson-card {
+  flex: 1 1 45%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
   cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
-
-.practice-category:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+.lesson-card:hover {
+  background-color: #f0f8ff;
 }
-
-.category-icon {
-  font-size: 3rem;
+.lesson-card.active {
+  border-color: #007bff;
+  background-color: #e7f1ff;
+}
+.status {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-weight: bold;
+}
+.status.completed {
+  color: green;
+}
+.lesson-detail {
+  border-top: 2px solid #007bff;
+  padding-top: 1rem;
+}
+.theory-text {
   margin-bottom: 1rem;
 }
-
-.category-difficulty {
+.next-lesson-btn {
+  margin-right: 1rem;
+}
+.close-lesson-btn {
   margin-top: 1rem;
 }
-
-.difficulty-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.difficulty-badge.beginner {
-  background: #d4edda;
-  color: #155724;
-}
-
-.difficulty-badge.intermediate {
-  background: #fff3cd;
-  color: #856404;
-}
-
-.difficulty-badge.advanced {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.current-exercise {
-  background: var(--bg-light);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin: 2rem 0;
-}
-
-.exercise-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.practice-history {
+.progress {
   margin-top: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #555;
 }
-
-.history-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.history-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem;
-  background: white;
-  border-radius: var(--border-radius-sm);
-  border: 1px solid #e9ecef;
-}
-
-.history-icon {
-  font-size: 1.2rem;
-}
-
-.history-title {
-  flex: 1;
-  font-weight: 500;
-}
-
-.history-time {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.btn-outline {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-top: 1rem;
 }
 </style>
