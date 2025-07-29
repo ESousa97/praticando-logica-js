@@ -1,121 +1,62 @@
-<!-- src/views/LessonView.vue -->
 <template>
-  <div class="lesson-view">
-    <div class="lesson-header">
-      <button class="btn-back" @click="goBack">
-        ← Voltar
-      </button>
-      <div class="lesson-info">
-        <h1>{{ lesson?.title }}</h1>
-        <p>{{ lesson?.subtitle }}</p>
-      </div>
-    </div>
+  <section class="lesson-view" v-if="lesson">
+    <header class="lesson-header">
+      <button @click="goBack" class="btn btn-outline">&larr; Voltar</button>
+      <h1>{{ lesson.title }}</h1>
+      <p>{{ lesson.subtitle || '' }}</p>
+    </header>
 
-    <div class="lesson-content" v-if="lesson">
-      <TheorySection 
-        :theory="lesson.theory" 
-        :code-example="lesson.codeExample" 
-      />
-      
-      <InteractiveDemo 
-        v-if="lesson.demo"
-        :demo-component="lesson.demo"
-        @completed="onDemoCompleted"
-      />
-      
-      <ExerciseSection 
+    <article class="lesson-content">
+      <section class="theory-section" v-html="lesson.theory"></section>
+
+      <pre class="code-example"><code>{{ lesson.codeExample }}</code></pre>
+
+      <ExerciseSection
         :exercise="lesson.exercise"
         @exercise-completed="onExerciseCompleted"
-        @next-step="goToNextLesson"
-        ref="exerciseSection"
       />
-    </div>
+    </article>
+  </section>
 
-    <div v-else class="error-state">
-      <h2>Lição não encontrada</h2>
-      <button class="btn btn-primary" @click="goBack">
-        Voltar aos Módulos
-      </button>
-    </div>
-  </div>
+  <section v-else class="error-state">
+    <h2>Lição não encontrada</h2>
+    <router-link to="/modules" class="btn btn-primary">Voltar para Módulos</router-link>
+  </section>
 </template>
 
 <script>
-import { useUserProgressStore } from '../stores/userProgress'
-import { useModulesStore } from '../stores/modules'
-import TheorySection from '../components/lesson/TheorySection.vue'
-import InteractiveDemo from '../components/lesson/InteractiveDemo.vue'
 import ExerciseSection from '../components/lesson/ExerciseSection.vue'
+import { modules } from '../data/modules.js'
 
 export default {
-  name: 'LessonView',
-  components: {
-    TheorySection,
-    InteractiveDemo,
-    ExerciseSection
-  },
+  name: "LessonView",
+  components: { ExerciseSection },
 
   props: {
-    moduleId: {
-      type: String,
-      required: true
-    },
-    lessonId: {
-      type: String,
-      required: true
-    }
+    moduleId: { type: String, required: true },
+    lessonId: { type: String, required: true }
   },
 
-  setup() {
-    const userProgress = useUserProgressStore()
-    const modulesStore = useModulesStore()
-    
+  data() {
     return {
-      userProgress,
-      modulesStore
+      lesson: null
     }
   },
 
-  computed: {
-    lesson() {
-      return this.modulesStore.getLessonById(this.moduleId, this.lessonId)
-    },
-
-    moduleLessons() {
-      const module = this.modulesStore.getModuleById(this.moduleId)
-      return module ? module.lessons : []
-    },
-
-    currentLessonIndex() {
-      return this.moduleLessons.findIndex(lesson => lesson.id === this.lessonId)
+  created() {
+    const mod = modules.find(m => m.id === this.moduleId)
+    if (mod) {
+      this.lesson = mod.lessons.find(l => l.id === this.lessonId) || null
     }
   },
 
   methods: {
-    onDemoCompleted() {
-      // Futuro: ações ao completar demo interativa
-    },
-
     onExerciseCompleted() {
-      this.userProgress.completeLesson(this.moduleId, this.lessonId)
-      // Você pode colocar feedback visual aqui
+      // Aqui você pode salvar progresso, mostrar feedback, etc.
+      alert('Parabéns por completar o exercício!')
     },
-
-    goToNextLesson() {
-      const nextIndex = this.currentLessonIndex + 1
-      if (nextIndex < this.moduleLessons.length) {
-        const nextLessonId = this.moduleLessons[nextIndex].id
-        this.$router.push({ 
-          name: 'Lesson', 
-          params: { moduleId: this.moduleId, lessonId: nextLessonId }
-        })
-      } else {
-        this.$router.push({ name: 'Module', params: { moduleId: this.moduleId } })
-      }
-    },
-
     goBack() {
-      this.$router.push({ name: 'Module', params: { moduleId: this.moduleId } })
+      this.$router.push({ name: 'Modules' })
     }
   }
 }
@@ -123,44 +64,79 @@ export default {
 
 <style scoped>
 .lesson-view {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .lesson-header {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
 }
 
-.lesson-info h1 {
-  margin-bottom: 0.5rem;
+.lesson-header h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
 }
 
-.lesson-info p {
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
+.lesson-header p {
+  font-size: 1rem;
+  color: #555;
 }
 
-.btn-back {
+.lesson-content {
+  line-height: 1.5;
+}
+
+.theory-section {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  background: #f9fafb;
+  padding: 1rem;
+  border-left: 5px solid #667eea;
+  border-radius: 6px;
+  white-space: pre-line;
+}
+
+.code-example {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.btn-outline {
   background: none;
-  border: none;
-  font-size: 1.2rem;
+  border: 2px solid #667eea;
+  color: #667eea;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  color: var(--primary-color);
-  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #667eea;
+  color: white;
 }
 
 .error-state {
   text-align: center;
-  margin-top: 4rem;
-}
-
-.error-state h2 {
-  margin-bottom: 1rem;
+  margin-top: 5rem;
+  color: #555;
 }
 </style>
