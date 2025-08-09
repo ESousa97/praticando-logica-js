@@ -586,5 +586,4 @@ Para suporte, dúvidas técnicas, colaborações ou parcerias:
 
 ---
 
-> 
 > ✨ **Criado em:** 4 de jan. de 2025 às 19:56
