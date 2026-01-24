@@ -10,7 +10,7 @@
           'relative transform cursor-pointer rounded-2xl border-2 p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl',
           progressStore.isModuleCompleted(module.id)
             ? 'border-green-400 bg-green-50'
-            : 'border-gray-200 bg-white hover:border-primary-300',
+            : 'hover:border-primary-300 border-gray-200 bg-white',
         ]"
       >
         <div
@@ -42,7 +42,7 @@
       <div class="mb-6 flex items-center gap-4">
         <button
           @click="selectedModule = null"
-          class="flex items-center gap-2 font-semibold text-primary-600 hover:text-primary-700"
+          class="text-primary-600 hover:text-primary-700 flex items-center gap-2 font-semibold"
         >
           <ArrowLeft class="h-5 w-5" />
           Voltar
@@ -77,7 +77,7 @@
               ? 'border-primary-500 bg-primary-50'
               : progressStore.isLessonCompleted(selectedModule.id, lesson.id)
                 ? 'border-green-400 bg-green-50'
-                : 'border-gray-200 bg-white hover:border-primary-300 hover:shadow-md',
+                : 'hover:border-primary-300 border-gray-200 bg-white hover:shadow-md',
           ]"
         >
           <h3 class="font-semibold text-gray-800">{{ lesson.title }}</h3>
@@ -94,7 +94,7 @@
         v-if="selectedLesson"
         class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg"
       >
-        <div class="bg-gradient-to-r from-primary-500 to-primary-700 p-6 text-white">
+        <div class="from-primary-500 to-primary-700 bg-gradient-to-r p-6 text-white">
           <h3 class="mb-2 text-2xl font-bold">{{ selectedLesson.title }}</h3>
         </div>
 
@@ -116,7 +116,7 @@
             <button
               v-if="showNextButton"
               @click="goToNextLesson"
-              class="flex items-center gap-2 rounded-lg bg-primary-500 px-6 py-3 font-semibold text-white transition-all hover:bg-primary-600"
+              class="bg-primary-500 hover:bg-primary-600 flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white transition-all"
             >
               Próxima Lição
               <ArrowRight class="h-4 w-4" />

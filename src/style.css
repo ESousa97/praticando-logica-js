@@ -1,19 +1,47 @@
-/* Tailwind CSS Base */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS v4 */
+@import 'tailwindcss';
+
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+  /* Primary colors */
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #667eea;
+  --color-primary-600: #5a67d8;
+  --color-primary-700: #4c51bf;
+  --color-primary-800: #434190;
+  --color-primary-900: #3c366b;
+  --color-primary-950: #1e1b4b;
+
+  /* Accent colors */
+  --color-accent-purple: #764ba2;
+  --color-accent-pink: #f472b6;
+  --color-accent-cyan: #22d3ee;
+
+  /* Success colors */
+  --color-success-50: #f0fdf4;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+
+  /* Error colors */
+  --color-error-50: #fef2f2;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+
+  /* Warning colors */
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+}
 
 /* ============================================
    Design Tokens - Variáveis CSS Centralizadas
    ============================================ */
 
 :root {
-  /* Cores Primárias */
-  --color-primary-50: #f0f4ff;
-  --color-primary-500: #667eea;
-  --color-primary-600: #5a67d8;
-  --color-primary-700: #4c51bf;
-
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-dark: linear-gradient(135deg, #1e293b 0%, #1e1b4b 50%, #312e81 100%);
@@ -51,7 +79,7 @@ body {
 @layer components {
   /* Botões */
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-primary-500 px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:bg-primary-600 hover:shadow-lg;
+    @apply bg-primary-500 hover:bg-primary-600 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg;
   }
 
   .btn-secondary {
@@ -64,29 +92,29 @@ body {
   }
 
   .card-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700 text-white;
+    @apply from-primary-500 to-primary-700 bg-gradient-to-r text-white;
   }
 
   /* Inputs */
   .input-base {
-    @apply w-full rounded-lg border border-gray-300 p-3 transition-all focus:border-transparent focus:ring-2 focus:ring-primary-500;
+    @apply focus:ring-primary-500 w-full rounded-lg border border-gray-300 p-3 transition-all focus:border-transparent focus:ring-2;
   }
 
   .input-code {
-    @apply w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2 focus:ring-primary-500;
+    @apply focus:ring-primary-500 w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2;
   }
 
   /* Alertas */
   .alert-success {
-    @apply rounded-lg border border-green-200 bg-success-50 p-4 text-green-800;
+    @apply bg-success-50 rounded-lg border border-green-200 p-4 text-green-800;
   }
 
   .alert-error {
-    @apply rounded-lg border border-red-200 bg-error-50 p-4 text-red-800;
+    @apply bg-error-50 rounded-lg border border-red-200 p-4 text-red-800;
   }
 
   .alert-warning {
-    @apply rounded-lg border border-yellow-200 bg-warning-50 p-4 text-yellow-800;
+    @apply bg-warning-50 rounded-lg border border-yellow-200 p-4 text-yellow-800;
   }
 
   /* Badges */
@@ -95,11 +123,11 @@ body {
   }
 
   .badge-success {
-    @apply badge bg-green-100 text-green-800;
+    @apply inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800;
   }
 
   .badge-warning {
-    @apply badge bg-yellow-100 text-yellow-800;
+    @apply inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800;
   }
 }
 
