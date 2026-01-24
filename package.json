@@ -1,20 +1,69 @@
 {
-  "name": "curso-javascript-moderno",
-  "version": "2.0.0",
+  "name": "praticando-logica-js",
+  "version": "2.1.0",
+  "description": "Plataforma interativa de exercícios para praticar lógica de programação com JavaScript",
   "type": "module",
+  "author": "Enoque Sousa <enoquesousa97@outlook.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ESousa97/praticando-logica-js.git"
+  },
+  "homepage": "https://praticando-logica-js.vercel.app/",
+  "keywords": [
+    "javascript",
+    "programming",
+    "education",
+    "exercises",
+    "vue",
+    "interactive"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{js,vue,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,vue,css,json}\"",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
-    "vue": "^3.4.0",
-    "vue-router": "^4.2.0",
+    "lucide-vue-next": "^0.400.0",
     "pinia": "^2.1.0",
-    "lucide-vue-next": "^0.400.0"
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@vitejs/plugin-vue": "^5.0.0",
-    "vite": "^5.0.0"
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
+    "eslint-plugin-vue": "^10.7.0",
+    "happy-dom": "^20.3.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "postcss": "^8.5.6",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.0.0",
+    "vitest": "^4.0.18"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

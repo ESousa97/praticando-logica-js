@@ -1,6 +1,118 @@
-/* Estilos customizados para o projeto */
+/* Tailwind CSS Base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Design Tokens - Variáveis CSS Centralizadas
+   ============================================ */
+
+:root {
+  /* Cores Primárias */
+  --color-primary-50: #f0f4ff;
+  --color-primary-500: #667eea;
+  --color-primary-600: #5a67d8;
+  --color-primary-700: #4c51bf;
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #1e1b4b 50%, #312e81 100%);
+
+  /* Tipografia */
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: Consolas, Monaco, 'Courier New', monospace;
+
+  /* Espaçamentos */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+/* ============================================
+   Estilos Base Globais
+   ============================================ */
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: var(--font-sans);
+  background: var(--gradient-primary);
   min-height: 100vh;
+}
+
+/* ============================================
+   Componentes Reutilizáveis
+   ============================================ */
+
+@layer components {
+  /* Botões */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-primary-500 px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:bg-primary-600 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-gray-500 px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-gray-600;
+  }
+
+  /* Cards */
+  .card {
+    @apply overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700 text-white;
+  }
+
+  /* Inputs */
+  .input-base {
+    @apply w-full rounded-lg border border-gray-300 p-3 transition-all focus:border-transparent focus:ring-2 focus:ring-primary-500;
+  }
+
+  .input-code {
+    @apply w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2 focus:ring-primary-500;
+  }
+
+  /* Alertas */
+  .alert-success {
+    @apply rounded-lg border border-green-200 bg-success-50 p-4 text-green-800;
+  }
+
+  .alert-error {
+    @apply rounded-lg border border-red-200 bg-error-50 p-4 text-red-800;
+  }
+
+  .alert-warning {
+    @apply rounded-lg border border-yellow-200 bg-warning-50 p-4 text-yellow-800;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+}
+
+/* ============================================
+   Utilitários Customizados
+   ============================================ */
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply border border-white/10 bg-white/5 backdrop-blur-sm;
+  }
 }
