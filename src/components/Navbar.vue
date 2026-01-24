@@ -47,10 +47,7 @@
         <div
           v-for="item in navItems"
           :key="item.name"
-          @click="
-            $router.push({ name: item.name })
-            mobileMenuOpen = false
-          "
+          @click="navigateMobile(item.name)"
           :class="[
             'flex cursor-pointer items-center space-x-3 rounded-lg px-4 py-3 transition-all duration-200',
             $route.name === item.name
@@ -68,8 +65,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { Home, BookOpen, Info, Code, Menu, X } from 'lucide-vue-next'
 
+const router = useRouter()
 const mobileMenuOpen = ref(false)
 
 const navItems = [
@@ -77,4 +76,9 @@ const navItems = [
   { name: 'Modules', label: 'Módulos', icon: BookOpen },
   { name: 'About', label: 'Sobre', icon: Info },
 ]
+
+const navigateMobile = (itemName) => {
+  router.push({ name: itemName })
+  mobileMenuOpen.value = false
+}
 </script>
