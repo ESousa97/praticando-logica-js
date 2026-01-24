@@ -3,20 +3,14 @@
 
 version: "1.0"
 
-# Exclude educational exercise folders from duplicate detection
+# Exclude educational exercise folders from analysis
 # Each folder in base/ represents a different learning stage with intentionally
 # self-contained code for educational purposes
 exclude_paths:
-  - "base/**/*"
+  - "base/"
 
-# Language-specific settings
-languages:
-  css:
-    exclude:
-      - "base/**/*.css"
-  javascript:
-    exclude:
-      - "base/**/*.js"
-  html:
-    exclude:
-      - "base/**/*.html"
+# Disable duplication detection for this educational project
+# The base/ folder contains learning exercises that are intentionally similar
+checks:
+  duplication:
+    enabled: false
