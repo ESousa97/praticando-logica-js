@@ -1,0 +1,16 @@
+# CodeFactor Configuration
+# https://support.codefactor.io/i14-analysis-configuration
+
+version: '1.0'
+
+# Exclude educational exercise folders from analysis
+# Each folder in base/ represents a different learning stage with intentionally
+# self-contained code for educational purposes
+exclude_paths:
+  - 'base/'
+
+# Disable duplication detection for this educational project
+# The base/ folder contains learning exercises that are intentionally similar
+checks:
+  duplication:
+    enabled: false
