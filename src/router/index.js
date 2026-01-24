@@ -6,7 +6,7 @@ import AboutView from '../views/AboutView.vue'
 const routes = [
   { path: '/', name: 'Home', component: HomeView },
   { path: '/modules', name: 'Modules', component: ModulesView },
-  { path: '/about', name: 'About', component: AboutView }
+  { path: '/about', name: 'About', component: AboutView },
 ]
 
 export default createRouter({
@@ -15,5 +15,5 @@ export default createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
     return { top: 0, behavior: 'smooth' }
-  }
+  },
 })
