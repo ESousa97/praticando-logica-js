@@ -1,51 +1,64 @@
 <template>
-  <nav class="bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+  <nav class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 shadow-lg backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
         <!-- Logo/Brand -->
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <Code class="w-6 h-6 text-white" />
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600"
+          >
+            <Code class="h-6 w-6 text-white" />
           </div>
           <span class="text-xl font-bold text-gray-800">JavaScript Pro</span>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-1">
-          <div v-for="item in navItems" :key="item.name" 
-               @click="$router.push({ name: item.name })"
-               :class="[
-                 'flex items-center space-x-2 px-4 py-2 rounded-lg cursor-pointer transition-all duration-200 font-medium text-sm',
-                 $route.name === item.name 
-                   ? 'bg-blue-50 text-blue-700 shadow-sm border border-blue-200' 
-                   : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-               ]">
-            <component :is="item.icon" class="w-4 h-4" />
+        <div class="hidden items-center space-x-1 md:flex">
+          <div
+            v-for="item in navItems"
+            :key="item.name"
+            @click="$router.push({ name: item.name })"
+            :class="[
+              'flex cursor-pointer items-center space-x-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200',
+              $route.name === item.name
+                ? 'border border-blue-200 bg-blue-50 text-blue-700 shadow-sm'
+                : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600',
+            ]"
+          >
+            <component :is="item.icon" class="h-4 w-4" />
             <span>{{ item.label }}</span>
           </div>
         </div>
 
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" 
-                  class="text-gray-600 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-            <Menu v-if="!mobileMenuOpen" class="w-6 h-6" />
-            <X v-else class="w-6 h-6" />
+          <button
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50 hover:text-blue-600"
+          >
+            <Menu v-if="!mobileMenuOpen" class="h-6 w-6" />
+            <X v-else class="h-6 w-6" />
           </button>
         </div>
       </div>
 
       <!-- Mobile Navigation -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t border-gray-100 py-4 space-y-2">
-        <div v-for="item in navItems" :key="item.name" 
-             @click="$router.push({ name: item.name }); mobileMenuOpen = false"
-             :class="[
-               'flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200',
-               $route.name === item.name 
-                 ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-500' 
-                 : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-             ]">
-          <component :is="item.icon" class="w-5 h-5" />
+      <div v-if="mobileMenuOpen" class="space-y-2 border-t border-gray-100 py-4 md:hidden">
+        <div
+          v-for="item in navItems"
+          :key="item.name"
+          @click="
+            $router.push({ name: item.name })
+            mobileMenuOpen = false
+          "
+          :class="[
+            'flex cursor-pointer items-center space-x-3 rounded-lg px-4 py-3 transition-all duration-200',
+            $route.name === item.name
+              ? 'border-l-4 border-blue-500 bg-blue-50 text-blue-700'
+              : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600',
+          ]"
+        >
+          <component :is="item.icon" class="h-5 w-5" />
           <span class="font-medium">{{ item.label }}</span>
         </div>
       </div>
@@ -62,6 +75,6 @@ const mobileMenuOpen = ref(false)
 const navItems = [
   { name: 'Home', label: 'Início', icon: Home },
   { name: 'Modules', label: 'Módulos', icon: BookOpen },
-  { name: 'About', label: 'Sobre', icon: Info }
+  { name: 'About', label: 'Sobre', icon: Info },
 ]
 </script>
