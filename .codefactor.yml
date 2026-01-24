@@ -1,0 +1,22 @@
+# CodeFactor Configuration
+# https://support.codefactor.io/i14-analysis-configuration
+
+version: "1.0"
+
+# Exclude educational exercise folders from duplicate detection
+# Each folder in base/ represents a different learning stage with intentionally
+# self-contained code for educational purposes
+exclude_paths:
+  - "base/**/*"
+
+# Language-specific settings
+languages:
+  css:
+    exclude:
+      - "base/**/*.css"
+  javascript:
+    exclude:
+      - "base/**/*.js"
+  html:
+    exclude:
+      - "base/**/*.html"
