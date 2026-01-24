@@ -22,13 +22,11 @@ export const useProgressStore = defineStore('progress', () => {
     }
   }
 
-  const isLessonCompleted = computed(() => (moduleId, lessonId) => 
-    completedLessons.value[moduleId]?.includes(lessonId) || false
+  const isLessonCompleted = computed(
+    () => (moduleId, lessonId) => completedLessons.value[moduleId]?.includes(lessonId) || false
   )
 
-  const isModuleCompleted = computed(() => (moduleId) => 
-    completedModules.value.includes(moduleId)
-  )
+  const isModuleCompleted = computed(() => (moduleId) => completedModules.value.includes(moduleId))
 
   return {
     completedLessons,
@@ -36,6 +34,6 @@ export const useProgressStore = defineStore('progress', () => {
     completeLesson,
     completeModule,
     isLessonCompleted,
-    isModuleCompleted
+    isModuleCompleted,
   }
 })
