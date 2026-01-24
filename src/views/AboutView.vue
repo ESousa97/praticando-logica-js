@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto max-w-4xl px-6">
     <div class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
-      <div class="bg-gradient-to-r from-primary-500 to-purple-600 p-8 text-white">
+      <div class="from-primary-500 bg-gradient-to-r to-purple-600 p-8 text-white">
         <h1 class="mb-2 text-4xl font-bold">Sobre o Curso</h1>
         <p class="text-xl opacity-90">Conheça nossa metodologia e objetivos</p>
       </div>
@@ -11,7 +11,7 @@
           <div class="space-y-6">
             <div>
               <h2 class="mb-3 flex items-center gap-2 text-2xl font-bold text-gray-800">
-                <Target class="h-6 w-6 text-primary-500" />
+                <Target class="text-primary-500 h-6 w-6" />
                 Nossa Missão
               </h2>
               <p class="leading-relaxed text-gray-700">
@@ -23,7 +23,7 @@
 
             <div>
               <h2 class="mb-3 flex items-center gap-2 text-2xl font-bold text-gray-800">
-                <Users class="h-6 w-6 text-primary-500" />
+                <Users class="text-primary-500 h-6 w-6" />
                 Para Quem é Este Curso
               </h2>
               <p class="leading-relaxed text-gray-700">
@@ -36,7 +36,7 @@
           <div class="space-y-6">
             <div>
               <h2 class="mb-3 flex items-center gap-2 text-2xl font-bold text-gray-800">
-                <BookOpen class="h-6 w-6 text-primary-500" />
+                <BookOpen class="text-primary-500 h-6 w-6" />
                 Metodologia
               </h2>
               <ul class="space-y-2 text-gray-700">
@@ -61,7 +61,7 @@
 
             <div>
               <h2 class="mb-3 flex items-center gap-2 text-2xl font-bold text-gray-800">
-                <Trophy class="h-6 w-6 text-primary-500" />
+                <Trophy class="text-primary-500 h-6 w-6" />
                 Resultados
               </h2>
               <p class="leading-relaxed text-gray-700">
@@ -85,7 +85,7 @@
           <div class="text-center">
             <router-link
               to="/modules"
-              class="inline-flex items-center gap-2 rounded-lg bg-primary-500 px-6 py-3 font-semibold text-white transition-all hover:bg-primary-600"
+              class="bg-primary-500 hover:bg-primary-600 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white transition-all"
             >
               Começar Agora
               <ArrowRight class="h-4 w-4" />
