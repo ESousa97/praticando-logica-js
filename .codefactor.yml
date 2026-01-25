@@ -1,22 +1,29 @@
 # CodeFactor Configuration
-# https://support.codefactor.io/i14-analysis-configuration
+# https://docs.codefactor.io/common-tasks/ignoring-files
 
 version: '1.0'
 
-# Exclude educational exercise folders from analysis
-# Each folder in base/ represents a different learning stage with intentionally
-# self-contained code for educational purposes
+# Exclude educational, generated and config folders from analysis
 exclude_paths:
-  - 'base/**'
-  - 'assets/**'
-  - 'public/**'
-  - 'dist/**'
-  - 'node_modules/**'
-  - 'src/data/**'
-  - 'src/style.css'
+  - 'base/*'
+  - 'assets/*'
+  - 'public/*'
+  - 'dist/*'
+  - 'node_modules/*'
+  - 'coverage/*'
+  - '.husky/*'
+  - '.github/*'
+  - '.vscode/*'
+  - 'src/data/*'
+  - '*.config.js'
+  - '*.config.cjs'
+  - '*.config.mjs'
+  - '*.test.js'
+  - '*.spec.js'
 
-# Disable duplication detection for this educational project
-# The base/ folder contains learning exercises that are intentionally similar
+# Disable checks that are not relevant for this project
 checks:
   duplication:
     enabled: false
+  complexity:
+    threshold: 20
