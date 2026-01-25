@@ -79,7 +79,7 @@ body {
 @layer components {
   /* Botões */
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-primary-500 px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:bg-primary-600 hover:shadow-lg;
+    @apply bg-primary-500 hover:bg-primary-600 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg;
   }
 
   .btn-secondary {
@@ -92,29 +92,29 @@ body {
   }
 
   .card-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700 text-white;
+    @apply from-primary-500 to-primary-700 bg-gradient-to-r text-white;
   }
 
   /* Inputs */
   .input-base {
-    @apply w-full rounded-lg border border-gray-300 p-3 transition-all focus:border-transparent focus:ring-2 focus:ring-primary-500;
+    @apply focus:ring-primary-500 w-full rounded-lg border border-gray-300 p-3 transition-all focus:border-transparent focus:ring-2;
   }
 
   .input-code {
-    @apply w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2 focus:ring-primary-500;
+    @apply focus:ring-primary-500 w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2;
   }
 
   /* Alertas */
   .alert-success {
-    @apply rounded-lg border border-green-200 bg-success-50 p-4 text-green-800;
+    @apply bg-success-50 rounded-lg border border-green-200 p-4 text-green-800;
   }
 
   .alert-error {
-    @apply rounded-lg border border-red-200 bg-error-50 p-4 text-red-800;
+    @apply bg-error-50 rounded-lg border border-red-200 p-4 text-red-800;
   }
 
   .alert-warning {
-    @apply rounded-lg border border-yellow-200 bg-warning-50 p-4 text-yellow-800;
+    @apply bg-warning-50 rounded-lg border border-yellow-200 p-4 text-yellow-800;
   }
 
   /* Badges */

@@ -18,7 +18,7 @@
     <div class="relative z-10 mx-auto max-w-6xl px-6 text-center">
       <!-- Hero Section -->
       <div class="mb-16">
-        <h1 class="mb-6 text-5xl font-bold leading-tight text-white md:text-7xl">
+        <h1 class="mb-6 text-5xl leading-tight font-bold text-white md:text-7xl">
           Domine
           <span
             class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
