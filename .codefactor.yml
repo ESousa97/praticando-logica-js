@@ -4,22 +4,24 @@
 version: '1.0'
 
 # Exclude educational, generated and config folders from analysis
+# Using ** for recursive matching (required by CodeFactor)
 exclude_paths:
-  - 'base/*'
-  - 'assets/*'
-  - 'public/*'
-  - 'dist/*'
-  - 'node_modules/*'
-  - 'coverage/*'
-  - '.husky/*'
-  - '.github/*'
-  - '.vscode/*'
-  - 'src/data/*'
-  - '*.config.js'
-  - '*.config.cjs'
-  - '*.config.mjs'
-  - '*.test.js'
-  - '*.spec.js'
+  - 'base/**'
+  - 'base/**/*'
+  - 'assets/**'
+  - 'public/**'
+  - 'dist/**'
+  - 'node_modules/**'
+  - 'coverage/**'
+  - '.husky/**'
+  - '.github/**'
+  - '.vscode/**'
+  - 'src/data/**'
+  - '**/*.config.js'
+  - '**/*.config.cjs'
+  - '**/*.config.mjs'
+  - '**/*.test.js'
+  - '**/*.spec.js'
 
 # Disable checks that are not relevant for this project
 checks:
