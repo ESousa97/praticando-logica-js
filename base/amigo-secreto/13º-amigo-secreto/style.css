@@ -63,7 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 80px;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 100px;
 }
 
@@ -179,7 +179,7 @@ body {
 }
 
 .section--results {
-  align-items: start;
+  align-items: flex-start;
   display: flex;
   font-family: 'Inter', sans-serif;
   font-style: normal;

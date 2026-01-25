@@ -58,7 +58,7 @@ input[type="number"] {
   background-size: auto 40%;
 
   position: relative;
-  background-position: left bottom -40px;
+  background-position: left 0 bottom -40px;
 }
 
 .grafismo-azul {
