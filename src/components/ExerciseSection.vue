@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-xl border-l-4 border-primary-500 bg-gray-50 p-6">
+  <div class="border-primary-500 rounded-xl border-l-4 bg-gray-50 p-6">
     <h4 class="mb-4 flex items-center gap-2 text-xl font-bold text-gray-800">
       <Code class="h-5 w-5" />
       Exercício Prático
@@ -12,7 +12,7 @@
       v-model="userAnswer"
       :placeholder="exercise.placeholder"
       rows="6"
-      class="w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2 focus:ring-primary-500"
+      class="focus:ring-primary-500 w-full resize-none rounded-lg border border-gray-300 bg-gray-900 p-4 font-mono text-sm text-green-400 placeholder-green-300/50 focus:border-transparent focus:ring-2"
     />
 
     <input
@@ -20,7 +20,7 @@
       v-model="userAnswer"
       :placeholder="exercise.placeholder"
       :type="exercise.type || 'text'"
-      class="w-full rounded-lg border border-gray-300 p-3 focus:border-transparent focus:ring-2 focus:ring-primary-500"
+      class="focus:ring-primary-500 w-full rounded-lg border border-gray-300 p-3 focus:border-transparent focus:ring-2"
     />
 
     <div class="mt-4 flex flex-wrap gap-3">
@@ -31,7 +31,7 @@
           'flex items-center gap-2 rounded-lg px-6 py-2 font-semibold transition-all',
           isCompleted
             ? 'cursor-not-allowed bg-green-500 text-white'
-            : 'bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg',
+            : 'bg-primary-500 hover:bg-primary-600 text-white hover:shadow-lg',
         ]"
       >
         <CheckCircle v-if="isCompleted" class="h-4 w-4" />
