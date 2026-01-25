@@ -12,6 +12,8 @@ exclude_paths:
   - 'public/**'
   - 'dist/**'
   - 'node_modules/**'
+  - 'src/data/**'
+  - 'src/style.css'
 
 # Disable duplication detection for this educational project
 # The base/ folder contains learning exercises that are intentionally similar
