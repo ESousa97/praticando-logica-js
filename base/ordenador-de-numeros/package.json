@@ -1,0 +1,7 @@
+{
+  "name": "ordenador-de-numeros",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"const fs=require('fs');fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('ordenador-de-numeros-final','dist',{recursive:true});\""
+  }
+}

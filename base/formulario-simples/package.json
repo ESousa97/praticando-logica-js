@@ -1,0 +1,7 @@
+{
+  "name": "formulario-simples",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"const fs=require('fs');fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('formulario-simples-final','dist',{recursive:true});\""
+  }
+}

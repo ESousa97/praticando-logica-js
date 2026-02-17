@@ -213,6 +213,16 @@ O projeto adota práticas de governança para manter a qualidade do código:
 
 Deploy contínuo automatizado via integração GitHub. Cada push na branch `main` aciona build e deploy, com URLs de preview para Pull Requests.
 
+### Vercel (subprojetos em `base/`)
+
+Para projetos standalone (como `converter-temperatura`, `formulario-simples`, `frases-split`, `ingresso`, `numeros-split` e `ordenador-de-numeros`):
+
+- Defina o **Root Directory** da Vercel para a pasta do subprojeto em `base/`
+- Use `npm run build` como comando de build
+- Use `dist` como **Output Directory**
+
+Cada um desses subprojetos possui `package.json` local que gera `dist` a partir da versão final do exercício, garantindo deploy estático compatível com a Vercel.
+
 ---
 
 ## FAQ
