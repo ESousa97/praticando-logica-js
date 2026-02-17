@@ -10,6 +10,18 @@
 **Plataforma interativa de exercícios para dominar lógica de programação com JavaScript — módulos progressivos do iniciante ao avançado, sistema de gamificação com badges, terminal de prática e dashboard de progresso — Vue 3, Pinia, Tailwind CSS e Vite.**
 
 [Demo](https://praticando-logica-js.vercel.app/)
+·
+[Conversor de Temperatura](https://converter-temperatura.vercel.app)
+·
+[Formulário Simples](https://formulario-simples-seven.vercel.app)
+·
+[Frases Split](https://frases-split.vercel.app)
+·
+[Ingressos Online](https://ingressos-online-kohl.vercel.app)
+·
+[Números Split](https://numeros-split.vercel.app)
+·
+[Ordenador de Números](https://ordenador-de-numeros.vercel.app)
 
 </div>
 
@@ -212,16 +224,6 @@ O projeto adota práticas de governança para manter a qualidade do código:
 ### Vercel (Produção)
 
 Deploy contínuo automatizado via integração GitHub. Cada push na branch `main` aciona build e deploy, com URLs de preview para Pull Requests.
-
-### Vercel (subprojetos em `base/`)
-
-Para projetos standalone (como `converter-temperatura`, `formulario-simples`, `frases-split`, `ingresso`, `numeros-split` e `ordenador-de-numeros`):
-
-- Defina o **Root Directory** da Vercel para a pasta do subprojeto em `base/`
-- Use `npm run build` como comando de build
-- Use `dist` como **Output Directory**
-
-Cada um desses subprojetos possui `package.json` local que gera `dist` a partir da versão final do exercício, garantindo deploy estático compatível com a Vercel.
 
 ---
 
